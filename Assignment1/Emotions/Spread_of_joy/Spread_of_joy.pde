@@ -1,3 +1,20 @@
+Emotions:
+Assignment – 1:
+
+Concept: Spread of joy
+
+These are strange times due to COVID-19 pandemic. The darkness, that is the very first blank canvas represents that. Light fights its way out to get out of that. 
+My concept is spread of joy and growth. A small flower starts blooming in ultimate darkness and helps spread light. It spreads light and gives hope to 
+the other flowers. Then slowly the other flowers start to bloom. As, it spreads more, it becomes bright all together and a symbol of hope, harmony and 
+growth during the dark time. The center core gives strength and the other shimmering core in the middle helps in the spread. It is a slow process, 
+but it increases with intensity. The full power can be seen in the end, bright and strong. So, in the midst of darkness light persists and spreads.
+
+The aesthetic choices represent the tone. Deep pink is a bright color with the use of a black background. It represents a flower and pink is generally a 
+happy color. Blue is a calm color and cool color. But when highly pigmented it provides a refreshing and energized effect. Yellow is a happy and warm color. 
+The center core is yellow. The hints of white stroke add to the brightness. So, all the colors go from dark to bright intensity, slowly spreading joy and hope. 
+
+
+
 void setup(){
   size (500, 500);
   background(0);
