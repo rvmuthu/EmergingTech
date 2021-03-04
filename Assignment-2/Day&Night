@@ -1,0 +1,179 @@
+//Assignment-2
+//Day&Night
+//Jennifer and Muthulakshmi 
+
+float circle; //sun/moon
+float diameter = height+300;
+int x = 0;
+int speedx = 10;//speed of the rotation of the sun,moon  
+
+boolean doSimulate = true;
+int day = 0;
+
+
+void setup(){
+  size (1200, 800, P3D); //canvas size 
+  background(0);
+  frameRate (5);
+}
+
+
+void showDay() { // day colors and instructions 
+    background(240, 248, 255);
+//176, 216, 235 - alternative colour
+    
+   //sunray
+   pushMatrix(); 
+  fill(255, random (127, 255), random (0, 224),94);
+  noStroke();
+  rotate(-frameCount);
+  scale(random(50));
+  ellipse(-50, 0, 100, 100);
+  popMatrix();
+  
+ 
+ pushMatrix(); 
+  translate(width/2, height/2);
+  stroke(112, 128, 144);
+  fill(205, 127, 80);
+  //220, 165, 40 - alternative colour
+  strokeWeight(25);
+  ellipse(50, 0, 650, 650);// big front circle (tunnel)
+  
+  fill(240, 248, 255); 
+//255, random (218, 255), random (100, 224) -alternative colour
+  noStroke();
+  ellipse(4, 0, 450, 450);// large/middle circle
+  
+  stroke(70, 80, 100);
+  strokeWeight(15);
+  fill(205, 99, 71);
+  //205, 140, 20 - alternative colour
+  ellipse (-50, 0, 300, 300);// middle changing colour circle (tunnel) 
+  
+  noStroke();
+  fill(240, 248, 255);
+  //255, random (218, 255), random (100, 224) - alternative colour
+  ellipse (-80, 0, 200, 200);// centre circle
+  
+  popMatrix();
+  
+}
+
+ 
+void showNight() { //night colors and instructions 
+  background(40,0, 112);
+  //75, 0, 130
+  
+  //ray
+  pushMatrix(); 
+  fill(random (216, 255), random (105, 230), random (147, 250),70);
+  noStroke();
+  rotate(-frameCount);
+  scale(random(50));
+  ellipse(-50, 0, 100, 100);
+  popMatrix();
+  
+ //circle tunnel
+ pushMatrix();
+  translate(width/2, height/2);
+  
+  stroke(216, 191, 216);
+  fill(147, 112, 219);
+  strokeWeight(25);
+  ellipse(50, 0, 650, 650);// big front circle (tunnel)
+  
+  fill(75, 0, 130);
+  noStroke();
+  ellipse(4, 0, 450, 450);// middle circle same colour as background
+  
+  fill(75, 25, 153);
+  stroke(102, 51, 153);
+  strokeWeight(15);
+  ellipse (-50, 0, 300, 300);// middle circle (tunnel)
+  
+  noStroke();
+  fill(75, 0, 130);
+  ellipse (-80, 0, 200, 200);// centre circle
+  
+  popMatrix();
+  
+}
+ 
+void showDayOrNight() {
+  if (mousePressed == true) {//boolean expression
+    showNight();
+    moon();
+  } if (mousePressed == false) {
+    showDay();
+    sun();
+  }
+}
+
+
+void recompute() { //if it moves out of the screen, to bring it back, consider it cycle of day
+  if (x > width || x < -width){
+    x = 0;
+    day+= 1;
+  }  
+  x += speedx;
+    
+}
+
+ 
+
+void sun() {// sun settings 
+  circle = map(x, 0, width, 0, 255);
+  float mouseangle = map(x, 2, width, 3.14, 6.28);
+  float d1 = 10 + (sin(mouseangle) * diameter/2) + diameter/2;
+  fill(255, 218, 120);
+  ellipse(x, d1+400, 150, 150);
+}
+
+void moon() {// moon settings 
+  circle = map(x, 0, width, 170, 255);
+  float mouseangle = map(x, 0, width, 3.14, 6.28);
+  float d1 = 10 + (sin(mouseangle) * diameter/2) + diameter/2;
+  fill(255, 255, 255);
+  ellipse(x, d1+400, 150, 150);
+}
+
+
+void draw(){
+   recompute();
+  if (doSimulate) {
+    showDayOrNight();
+  }
+ 
+  pushMatrix(); 
+  fill(255, random (100, 255), random (0, 224), 70);
+  noStroke();
+  rotate(-frameCount/4);
+  scale(random(30));
+  ellipse(-50, 0, 100, 100);
+  popMatrix();
+  
+ 
+  pushMatrix();
+  translate(width/2, height/2);
+  
+  fill(100, 60);
+  stroke(190, 30);
+  strokeWeight(25);
+  ellipse(50, 0, 650, 650);// big front tunnel
+  
+  fill(255, 30);
+  noStroke();
+  ellipse(4, 0, 450, 450);// large white circle
+  
+  stroke(100, 30);
+  strokeWeight(15);
+  fill(0, 40);
+  ellipse (-50, 0, 300, 300);// mid tunnel 
+  
+  noStroke();
+  fill(255, 40);
+  ellipse (-80, 0, 200, 200);// centre white circle
+  
+  popMatrix();
+}
